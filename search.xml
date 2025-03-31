@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>CocoaPods 相关问题</title>
+    <url>/blog/201903051407.html</url>
+    <content><![CDATA[<p>这里记录CocoaPods出现的一些问题和解决方法。</p>
+<h1 id="错误一"><a href="#错误一" class="headerlink" title="错误一"></a>错误一</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ gem source -a https://gems.ruby-china.org</span><br><span class="line">Error fetching https://gems.ruby-china.org:</span><br><span class="line">	bad response Not Found 404 (https://gems.ruby-china.org/specs.4.8.gz)</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>没有找到对应的路径，最后发现<a href="https://gems.ruby-china.org/">官网</a> 公告域名变了<strong>由 <code>.org</code> 替换为 <code>.com</code></strong></p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ gem source -a https://gems.ruby-china.com</span><br></pre></td></tr></table></figure>
+
+<h1 id="错误二"><a href="#错误二" class="headerlink" title="错误二"></a>错误二</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Error installing pods:active support requires Ruby version &gt;= 2.2.0</span><br></pre></td></tr></table></figure>
+
+<h2 id="原因-1"><a href="#原因-1" class="headerlink" title="原因"></a>原因</h2><p> 当前的 ruby 版本太低, 需要升级ruby 版本</p>
+<h2 id="解决方法-1"><a href="#解决方法-1" class="headerlink" title="解决方法"></a>解决方法</h2><p>安装rvm(Ruby版本管理器)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 判断是否安装rvm</span><br><span class="line">$ rvm -v </span><br><span class="line">command not found: rvm （如果显示这个是未安装，显示的是版本号请跳过这一部分直接进入安装ruby）</span><br><span class="line">// 安装rvm</span><br><span class="line">$ curl -L get.rvm.io | bash -s stable</span><br><span class="line"></span><br><span class="line">// 使刚添加的命令生效</span><br><span class="line">source ~/.rvm/scripts/rvm</span><br><span class="line"></span><br><span class="line">// 参考是否安装成功</span><br><span class="line">$ rvm -v</span><br><span class="line">rvm 1.29.4 (latest) by Michal Papis, Piotr Kuczynski, Wayne E. Seguin [https://rvm.io]</span><br></pre></td></tr></table></figure>
+
+<p>安装ruby</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 查看版本列表</span><br><span class="line">$ rvm list known</span><br><span class="line">[ruby-]1.8.6[-p420]</span><br><span class="line">[ruby-]1.8.7[-head] # security released on head</span><br><span class="line">[ruby-]1.9.1[-p431]</span><br><span class="line">[ruby-]1.9.2[-p330]</span><br><span class="line">[ruby-]1.9.3[-p551]</span><br><span class="line">[ruby-]2.0.0[-p648]</span><br><span class="line">[ruby-]2.1[.10]</span><br><span class="line">[ruby-]2.2[.10]</span><br><span class="line">[ruby-]2.3[.7]</span><br><span class="line">[ruby-]2.4[.4]</span><br><span class="line">[ruby-]2.5[.1]</span><br><span class="line">[ruby-]2.6[.0-preview2]</span><br><span class="line">ruby-head</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">// 安装 ruby(这里安装的是2.5.1)</span><br><span class="line">$ rvm install 2.5.1</span><br><span class="line"></span><br><span class="line">// 查看安装</span><br><span class="line">$ ruby -v</span><br><span class="line">ruby 2.5.1p57 (2018-03-29 revision 63029) [x86_64-darwin16]</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="错误三"><a href="#错误三" class="headerlink" title="错误三"></a>错误三</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/Library/Ruby/Site/2.0.0/rubygems.rb:250:in `find_spec_for_exe&#x27;: can&#x27;t find gem cocoapods (&gt;= 0.a) (Gem::GemNotFoundException)</span><br><span class="line">    from /Library/Ruby/Site/2.0.0/rubygems.rb:278:in `activate_bin_path&#x27;</span><br><span class="line">    from /usr/local/bin/pod:22:in `&lt;main&gt;’</span><br></pre></td></tr></table></figure>
+
+<h2 id="原因-2"><a href="#原因-2" class="headerlink" title="原因"></a>原因</h2><p><code>ruby</code>更新版本后导致<code>pod</code>找不到依赖的版本导致的</p>
+<h2 id="解决方法-2"><a href="#解决方法-2" class="headerlink" title="解决方法"></a>解决方法</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 查找pod 路径</span><br><span class="line">$ where pod</span><br><span class="line">/usr/local/bin/pod</span><br><span class="line"></span><br><span class="line">// 删除pod的执行文件</span><br><span class="line">$ sudo rm -rf /usr/local/bin/pod</span><br><span class="line">Password:</span><br><span class="line"></span><br><span class="line">// 查看 gem 依赖的cocoapods</span><br><span class="line">$ gem list </span><br><span class="line"></span><br><span class="line">*** LOCAL GEMS ***</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">activesupport (4.2.6)</span><br><span class="line"></span><br><span class="line">bigdecimal (1.2.7, default: 1.2.0)</span><br><span class="line"></span><br><span class="line">CFPropertyList (2.3.3, 2.2.8)</span><br><span class="line"></span><br><span class="line">claide (1.0.1, 1.0.0)</span><br><span class="line"></span><br><span class="line">cocoa (0.1.6)</span><br><span class="line"></span><br><span class="line">cocoapods (1.1.1)</span><br><span class="line"></span><br><span class="line">cocoapods-core (1.1.1, 1.0.1)</span><br><span class="line"></span><br><span class="line">cocoapods-deintegrate (1.0.1, 1.0.0)</span><br><span class="line"></span><br><span class="line">cocoapods-downloader (1.1.2, 1.1.1, 1.0.1)</span><br><span class="line"></span><br><span class="line">cocoapods-plugins (1.0.0)</span><br><span class="line"></span><br><span class="line">cocoapods-search (1.0.0)</span><br><span class="line"></span><br><span class="line">cocoapods-stats (1.0.0)</span><br><span class="line"></span><br><span class="line">cocoapods-trunk (1.1.1, 1.0.0)</span><br><span class="line"></span><br><span class="line">cocoapods-try (1.1.0, 1.0.0)</span><br><span class="line"></span><br><span class="line">colored (1.2)</span><br><span class="line"></span><br><span class="line">concurrent-ruby (1.0.2)</span><br><span class="line"></span><br><span class="line">escape (0.0.4)</span><br><span class="line"></span><br><span class="line">ffi (1.9.14)</span><br><span class="line"></span><br><span class="line">fourflusher (2.0.1, 2.0.0, 0.3.2)</span><br><span class="line"></span><br><span class="line">fuzzy_match (2.0.4)</span><br><span class="line"></span><br><span class="line">gh_inspector (1.0.2)</span><br><span class="line"></span><br><span class="line">i18n (0.7.0)</span><br><span class="line"></span><br><span class="line">io-console (default: 0.4.2)</span><br><span class="line"></span><br><span class="line">json (default: 1.7.7)</span><br><span class="line"></span><br><span class="line">libxml-ruby (2.6.0)</span><br><span class="line"></span><br><span class="line">minitest (5.9.0, default: 4.3.2)</span><br><span class="line"></span><br><span class="line">molinillo (0.5.1, 0.4.5)</span><br><span class="line"></span><br><span class="line">nap (1.1.0)</span><br><span class="line"></span><br><span class="line">netrc (0.7.8)</span><br><span class="line"></span><br><span class="line">nokogiri (1.5.6)</span><br><span class="line"></span><br><span class="line">pods (0.0.1)</span><br><span class="line"></span><br><span class="line">psych (default: 2.0.0)</span><br><span class="line"></span><br><span class="line">rake (default: 0.9.6)</span><br><span class="line"></span><br><span class="line">rdoc (default: 4.0.0)</span><br><span class="line"></span><br><span class="line">rubygems-update (2.6.6)</span><br><span class="line"></span><br><span class="line">sqlite3 (1.3.7)</span><br><span class="line"></span><br><span class="line">test-unit (default: 2.0.0.0)</span><br><span class="line"></span><br><span class="line">thread_safe (0.3.5)</span><br><span class="line"></span><br><span class="line">tzinfo (1.2.2)</span><br><span class="line"></span><br><span class="line">xcodeproj (1.3.3, 1.1.0)</span><br><span class="line"></span><br><span class="line">// 删除依赖的 cocoapods (这里删除的和上面👆要一致)</span><br><span class="line">$ sudo gem uninstall cocoapods-core -v 1.1.1</span><br><span class="line">$ sudo gem uninstall cocoapods -v 1.1.1</span><br><span class="line">$ sudo gem install cocoapods</span><br><span class="line"></span><br><span class="line">// 安装pod</span><br><span class="line">$ sudo gem install -n /usr/local/bin cocoapods</span><br><span class="line">$ pod setup</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>CocoaPods</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Apple 审核回复模版</title>
+    <url>/blog/202103200615.html</url>
+    <content><![CDATA[<p>Dear Apple Reviewer:</p>
+<p>Thank you for your notification.<br>I have received the review results of your company and I would like to make the following response：</p>
+<p>….</p>
+<p>Please review our app again and give it a pass. Thank you very much.<br>Best regards.</p>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>审核</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac 安装软件记录</title>
+    <url>/blog/202503290333.html</url>
+    <content><![CDATA[<p>这里整理了一些在 macOS 上实用的工具，涵盖开发、生产力、系统管理等多个方面，并附上简要介绍和下载链接。</p>
+<ul>
+<li><h2 id="剪贴板工具"><a href="#剪贴板工具" class="headerlink" title="剪贴板工具"></a>剪贴板工具</h2><blockquote>
+<p>快捷键：<code>Ctrl + Option + Command + C</code></p>
+</blockquote>
+<p>剪贴板管理工具可以帮助你记录并快速访问历史复制的内容，提高工作效率。</p>
+<ul>
+<li><strong><a href="https://maccy.app/">Maccy</a></strong><br> 轻量级的 macOS 剪贴板管理工具，支持快捷键调用，搜索复制历史，并且免费开源。</li>
+<li><strong><a href="https://github.com/ayangweb/EcoPaste">EcoPaste</a></strong><br> 另一个 macOS 剪贴板工具，专注于隐私保护，支持剪贴板自动清理。</li>
+</ul>
+<hr>
+<h2 id="截图软件"><a href="#截图软件" class="headerlink" title="截图软件"></a>截图软件</h2><blockquote>
+<p>快捷键：<code>Ctrl + Command + A</code></p>
+</blockquote>
+<ul>
+<li><strong><a href="https://zh.snipaste.com/">Snipaste</a></strong><br> 强大的截图工具，支持贴图功能，可以把截图直接固定在屏幕上，方便参考。</li>
+</ul>
+<hr>
+<h2 id="翻译工具"><a href="#翻译工具" class="headerlink" title="翻译工具"></a>翻译工具</h2><blockquote>
+<p>快捷键：<code>Ctrl + 2</code></p>
+</blockquote>
+<ul>
+<li><strong>欧路词典</strong><br> macOS 端强大的词典工具，支持多种翻译引擎，支持划词翻译和生词本管理。</li>
+</ul>
+<hr>
+<h2 id="音频处理"><a href="#音频处理" class="headerlink" title="音频处理"></a>音频处理</h2><ul>
+<li><strong><a href="https://www.audacityteam.org/">Audacity</a></strong><br> 免费开源的音频编辑软件，支持多轨录音、剪辑、降噪等功能。</li>
+</ul>
+<hr>
+<h2 id="抓包工具"><a href="#抓包工具" class="headerlink" title="抓包工具"></a>抓包工具</h2><p>抓包工具可以用于网络请求分析、调试 API，适合开发者和安全研究人员。</p>
+<ul>
+<li><strong><a href="https://www.charlesproxy.com/">Charles</a></strong><br> 专业的 HTTP 代理工具，支持网络请求拦截、修改、重放等功能。</li>
+<li><strong><a href="https://proxyman.io/">Proxyman</a></strong><br> 现代化的 macOS 抓包工具，支持 HTTPS 解密，界面友好，适合 iOS&#x2F;Android 开发者。</li>
+</ul>
+<hr>
+<h2 id="三维模型"><a href="#三维模型" class="headerlink" title="三维模型"></a>三维模型</h2><ul>
+<li><strong><a href="https://www.blender.org/">Blender</a></strong><br> 强大的开源 3D 建模和动画制作工具，支持建模、渲染、动画、物理模拟等功能。</li>
+</ul>
+<hr>
+<h2 id="AI-相关"><a href="#AI-相关" class="headerlink" title="AI 相关"></a>AI 相关</h2><p>人工智能助手可以用于代码编写、文档撰写、调试等多种任务。</p>
+<ul>
+<li><strong><a href="https://chat.openai.com/">ChatGPT</a></strong><br> OpenAI 旗下的 AI 助手，适用于对话、生成代码、写作等任务。</li>
+<li><strong><a href="https://claude.ai/">Claude</a></strong><br> Anthropic 开发的 AI 助手，专注于安全性和长文本处理。</li>
+<li><strong><a href="https://gemini.google.com/">Gemini</a></strong><br> Google 开发的 AI 模型，适用于搜索增强、代码生成等。</li>
+<li><strong><a href="https://x.ai/">Grok</a></strong><br> 由 X（前 Twitter）开发的 AI 助手，整合社交媒体信息。</li>
+<li><strong><a href="https://poe.com/">Poe</a></strong><br> 由 Quora 推出的 AI 平台，集成多个大语言模型（GPT、Claude 等）。</li>
+</ul>
+<hr>
+<h2 id="科学上网工具"><a href="#科学上网工具" class="headerlink" title="科学上网工具"></a>科学上网工具</h2><ul>
+<li><strong><a href="https://github.com/yichengchen/clashX">ClashX Pro</a></strong><br> 适用于 macOS 的代理工具，支持多种协议，适合科学上网和流量管理。</li>
+<li><strong><a href="https://apps.apple.com/us/app/shadowrocket/id932747118">Shadowrocket</a></strong><br> iOS 平台的代理工具，支持多种协议，需付费购买。</li>
+</ul>
+<hr>
+<h2 id="视频流分析工具"><a href="#视频流分析工具" class="headerlink" title="视频流分析工具"></a>视频流分析工具</h2><p>用于分析视频编码、比特率、帧率等信息。</p>
+<ul>
+<li><strong>CodecVisa</strong><br> 专业的视频流解析工具，支持 H.264、H.265 等格式。</li>
+<li><strong>StreamAnalyzer</strong><br> 高级视频流分析工具，支持多种编解码格式。</li>
+<li><strong>StreamEye</strong><br> 视频流分析软件，可用于调试视频质量问题。</li>
+<li><strong><a href="https://github.com/IENT/YUView">YUView</a></strong><br> 开源的视频分析工具，支持 YUV 视频查看与分析。</li>
+<li><strong><a href="https://github.com/virinext/YUVToolkit">YUVToolkit</a></strong><br> 轻量级的 YUV 视频查看工具。</li>
+</ul>
+<hr>
+<h2 id="数据库管理"><a href="#数据库管理" class="headerlink" title="数据库管理"></a>数据库管理</h2><ul>
+<li><strong><a href="https://sqlitebrowser.org/">DB Browser for SQLite</a></strong><br> 适用于 SQLite 数据库的可视化管理工具。</li>
+<li><strong><a href="https://dbeaver.io/">DBeaver</a></strong><br> 通用数据库管理工具，支持 MySQL、PostgreSQL、MongoDB 等。</li>
+</ul>
+<hr>
+<h2 id="Git-工具"><a href="#Git-工具" class="headerlink" title="Git 工具"></a>Git 工具</h2><ul>
+<li><strong><a href="https://git-fork.com/">Fork</a></strong><br> 现代化的 Git 客户端，支持 GitHub、GitLab 等平台。</li>
+<li><strong><a href="https://www.sourcetreeapp.com/">Sourcetree</a></strong><br> Atlassian 出品的 Git 可视化管理工具。</li>
+</ul>
+<hr>
+<h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><ul>
+<li><strong>Google Chrome</strong><br> 兼容性最强的浏览器，支持大量开发者扩展。</li>
+</ul>
+<hr>
+<h2 id="二进制工具"><a href="#二进制工具" class="headerlink" title="二进制工具"></a>二进制工具</h2><ul>
+<li><strong>Hex Fiend</strong><br> macOS 上强大的十六进制编辑器，适合分析二进制文件。</li>
+<li><strong>ImHex</strong><br> 现代化的十六进制编辑器，支持高级模式和数据分析。</li>
+</ul>
+<hr>
+<h2 id="视频播放器"><a href="#视频播放器" class="headerlink" title="视频播放器"></a>视频播放器</h2><ul>
+<li><strong><a href="https://iina.io/">IINA</a></strong><br> macOS 上最佳的开源视频播放器，基于 mpv，支持多种格式。</li>
+</ul>
+<hr>
+<h2 id="终端工具"><a href="#终端工具" class="headerlink" title="终端工具"></a>终端工具</h2><ul>
+<li><p><strong><a href="https://iterm2.com/">iTerm2</a></strong><br> macOS 上最强大的终端工具，支持分屏、标签页等高级功能。</p>
+<ul>
+<li><p><strong>oh-my-zsh</strong>（推荐插件）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 插件</span><br><span class="line">plugins=(</span><br><span class="line">    git</span><br><span class="line">    zsh-syntax-highlighting</span><br><span class="line">    zsh-autosuggestions</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># https://github.com/sindresorhus/pure 主题</span><br><span class="line">fpath+=($HOME/.zsh/pure)</span><br><span class="line">autoload -U promptinit; promptinit</span><br><span class="line">prompt pure</span><br><span class="line"></span><br><span class="line"># rbenv</span><br><span class="line">eval &quot;$(rbenv init - zsh)&quot;</span><br><span class="line"></span><br><span class="line"># alias </span><br><span class="line">alias rm=&quot;trash&quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="JSON-Model-生成"><a href="#JSON-Model-生成" class="headerlink" title="JSON Model 生成"></a>JSON Model 生成</h2><ul>
+<li><strong>JsonToModel</strong><br> macOS 上的 JSON 解析和 Model 生成工具。</li>
+</ul>
+<hr>
+<h2 id="解压缩工具"><a href="#解压缩工具" class="headerlink" title="解压缩工具"></a>解压缩工具</h2><ul>
+<li><strong><a href="https://www.keka.io/">Keka</a></strong><br> macOS 上强大的解压缩工具，支持 7z、RAR、ZIP 等格式。</li>
+</ul>
+<hr>
+<h2 id="风扇控制"><a href="#风扇控制" class="headerlink" title="风扇控制"></a>风扇控制</h2><ul>
+<li><strong>Macs Fan Control</strong><br> 监控和调整 Mac 风扇转速，降低温度和噪音。</li>
+</ul>
+<hr>
+<h2 id="iOS-崩溃符号化"><a href="#iOS-崩溃符号化" class="headerlink" title="iOS 崩溃符号化"></a>iOS 崩溃符号化</h2><ul>
+<li><strong><a href="https://github.com/haolloyin/MacSymbolicator">MacSymbolicator</a></strong><br> iOS 开发者用于符号化崩溃日志的工具。</li>
+</ul>
+<hr>
+<h2 id="远程工具"><a href="#远程工具" class="headerlink" title="远程工具"></a>远程工具</h2><ul>
+<li><strong>Microsoft Remote Desktop</strong><br> 远程访问 Windows 设备的官方工具。</li>
+<li><strong>VNC Viewer</strong><br> 远程桌面访问工具，支持 VNC 协议。</li>
+</ul>
+<hr>
+<h2 id="RSS-阅读工具"><a href="#RSS-阅读工具" class="headerlink" title="RSS 阅读工具"></a>RSS 阅读工具</h2><ul>
+<li><strong><a href="https://apps.apple.com/us/app/reeder-5/id1529448980">Reader</a></strong><br> macOS 端强大的 RSS 订阅阅读器。</li>
+<li><strong><a href="https://foloapp.com/">Folo</a></strong><br> 现代化的 RSS 阅读工具，支持 iCloud 同步。</li>
+</ul>
+<hr>
+<h2 id="文本处理"><a href="#文本处理" class="headerlink" title="文本处理"></a>文本处理</h2><ul>
+<li><strong><a href="https://www.notion.so/">Notion</a></strong><br> 笔记和知识管理工具，支持多人协作。</li>
+<li><strong><a href="https://typora.io/">Typora</a></strong><br> 最简洁的 Markdown 编辑器。</li>
+<li><strong><a href="https://www.wps.com/">WPS Office</a></strong><br> 兼容 Microsoft Office 的办公软件。</li>
+</ul>
+<h2 id="电源管理"><a href="#电源管理" class="headerlink" title="电源管理"></a>电源管理</h2><ul>
+<li><strong><a href="https://apphousekitchen.com/">AIDente</a></strong><br> MacBook 充电管理工具，可以限制最大充电电量，延长电池寿命。</li>
+</ul>
+<hr>
+<h2 id="下载工具"><a href="#下载工具" class="headerlink" title="下载工具"></a>下载工具</h2><ul>
+<li><strong>Downie</strong><br> 强大的视频下载工具，支持 YouTube、Bilibili 等主流网站的视频下载。</li>
+</ul>
+<hr>
+<h2 id="VPN-客户端"><a href="#VPN-客户端" class="headerlink" title="VPN 客户端"></a>VPN 客户端</h2><ul>
+<li><strong>OpenVPN Connect</strong><br> OpenVPN 官方客户端，支持自建 VPN 连接。</li>
+</ul>
+<hr>
+<h2 id="Android-设备控制"><a href="#Android-设备控制" class="headerlink" title="Android 设备控制"></a>Android 设备控制</h2><ul>
+<li><strong><a href="https://github.com/barry-ran/QtScrcpy">QtScrcpy</a></strong><br> 基于 Scrcpy 的 Android 设备投屏与控制工具，支持无线连接和物理按键映射。</li>
+</ul>
+</li>
+</ul>
+<h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><ul>
+<li><strong><a href="https://code.visualstudio.com/">Visual Studio Code</a></strong><br> 微软出品的轻量级代码编辑器，支持丰富的扩展插件，适合多种开发环境。</li>
+<li><strong><a href="https://developer.apple.com/xcode/">Xcode</a></strong><br> Apple 官方的 iOS&#x2F;macOS 开发工具，内置 Swift 和 SwiftUI 支持。</li>
+</ul>
+<hr>
+<h2 id="网盘工具"><a href="#网盘工具" class="headerlink" title="网盘工具"></a>网盘工具</h2><ul>
+<li><strong><a href="https://pan.baidu.com/">百度网盘</a></strong><br> 国内主流的云存储服务，支持大文件存储与分享。</li>
+</ul>
+<hr>
+<h2 id="命令行工具"><a href="#命令行工具" class="headerlink" title="命令行工具"></a>命令行工具</h2><ul>
+<li><p><strong><a href="https://github.com/sindresorhus/trash-cli">trash</a></strong><br> 命令行版 <code>rm</code>，可将文件移至回收站而不是直接删除。</p>
+</li>
+<li><p><strong>clang-format</strong><br> 代码格式化工具，支持 C++、Objective-C、Swift 等多种语言。</p>
+</li>
+<li><p><strong><a href="https://ffmpeg.org/">ffmpeg</a></strong><br> 强大的音视频处理工具，可用于格式转换、压缩、剪辑等。</p>
+</li>
+<li><p><strong><a href="https://nodejs.org/">node.js</a></strong><br> JavaScript 运行时，适用于前端开发、服务器端开发。</p>
+<ul>
+<li><strong>Hexo</strong>：基于 Node.js 的静态博客框架，可快速生成个人博客。</li>
+</ul>
+</li>
+<li><p><strong><a href="https://ninja-build.org/">ninja</a></strong><br> 轻量级、高速的构建系统，适用于 C++ 等编译项目。</p>
+</li>
+<li><p><strong><a href="https://github.com/rbenv/rbenv">rbenv</a></strong><br> Ruby 版本管理工具，方便切换不同版本的 Ruby 运行环境。</p>
+<ul>
+<li><strong>Ruby</strong>：适用于 Ruby 开发，尤其是 Rails 项目。</li>
+</ul>
+</li>
+<li><p><strong><a href="https://www.python.org/">Python</a></strong><br> 强大的通用编程语言，适用于数据分析、自动化、AI 开发等。</p>
+</li>
+<li><p><strong><a href="https://blog.mikeswanson.com/spatial/">Spatial</a></strong> </p>
+<p>是一款 macOS 命令行工具，主要用于解析和处理 Apple 的 <code>.spatial</code> 文件格式。<code>.spatial</code> 文件通常用于 Apple 设备的 3D 数据存储，例如 Apple Vision Pro 的空间视频或其他 3D 相关内容。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Mac</category>
+      </categories>
+      <tags>
+        <tag>软件</tag>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reveal 调试应用</title>
+    <url>/blog/202103200546.html</url>
+    <content><![CDATA[<h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><ol>
+<li>Xcode 9.4.1</li>
+<li>Reveal 13(10035）</li>
+</ol>
+<h2 id="模拟器调试"><a href="#模拟器调试" class="headerlink" title="模拟器调试"></a>模拟器调试</h2><ol>
+<li><p>首先安装 <code>Debugger Commands</code><br><img src="https://user-gold-cdn.xitu.io/2019/5/30/16b083408ae2aca6?w=1958&h=730&f=jpeg&s=179233"></p>
+</li>
+<li><p>成功后<br><img src="https://user-gold-cdn.xitu.io/2019/5/30/16b083408b6c9c0e?w=1796&h=616&f=jpeg&s=163542"></p>
+</li>
+</ol>
+<p><strong>这里只介绍最简单的断点调试</strong></p>
+<ol>
+<li><p>添加断点<br><img src="https://user-gold-cdn.xitu.io/2019/5/30/16b083408b883232?w=900&h=1608&f=jpeg&s=187569"></p>
+</li>
+<li><p>填写信息<br><img src="https://user-gold-cdn.xitu.io/2019/5/30/16b083408b751b5b?w=1542&h=1590&f=jpeg&s=415523"></p>
+</li>
+<li><p>为了方便以后使用把断点加入到user<br><img src="https://user-gold-cdn.xitu.io/2019/5/30/16b083408b8317d1?w=1556&h=1284&f=jpeg&s=297881"></p>
+</li>
+<li><p>成功后是这样的<br><img src="https://user-gold-cdn.xitu.io/2019/5/30/16b083408b952f2b?w=894&h=1724&f=jpeg&s=118829"></p>
+</li>
+<li><p>运行后注意看控制台里的信息<br><img src="https://user-gold-cdn.xitu.io/2019/5/30/16b08340d32a959d?w=1698&h=76&f=jpeg&s=49347"></p>
+</li>
+</ol>
+<h2 id="真机调试"><a href="#真机调试" class="headerlink" title="真机调试"></a>真机调试</h2><ol>
+<li><p>获取 <code>RevealServer.framework</code><br><img src="https://user-gold-cdn.xitu.io/2019/5/30/16b08340d3219a92?w=1814&h=574&f=jpeg&s=194129"></p>
+</li>
+<li><p>拷贝一份到桌面<br><img src="https://user-gold-cdn.xitu.io/2019/5/30/16b08340d7638fc4?w=1210&h=708&f=jpeg&s=144741"></p>
+</li>
+<li><p>拖拽到项目中<br><img src="https://user-gold-cdn.xitu.io/2019/5/30/16b08340e946df76?w=1480&h=848&f=jpeg&s=136967"></p>
+</li>
+<li><p>这个时候运行项目会报错<br><img src="https://user-gold-cdn.xitu.io/2019/5/30/16b0834155280503?w=1690&h=124&f=jpeg&s=86447"></p>
+</li>
+<li><p>解决错误<br><img src="https://user-gold-cdn.xitu.io/2019/5/30/16b08341555cf772?w=1762&h=1646&f=jpeg&s=342041"></p>
+</li>
+<li><p>添加包<br><img src="https://user-gold-cdn.xitu.io/2019/5/30/16b08341558ee6f7?w=834&h=912&f=jpeg&s=100541"></p>
+</li>
+<li><p>成功<br><img src="https://user-gold-cdn.xitu.io/2019/5/30/16b0834155817c35?w=3018&h=1978&f=jpeg&s=315793"></p>
+</li>
+</ol>
+<p>注意：真机调试也要有模拟器调试的断点存在</p>
+<h2 id="越狱调试"><a href="#越狱调试" class="headerlink" title="越狱调试"></a>越狱调试</h2><p>这个<a href="https://blog.csdn.net/hello_hwc/article/details/69365095">文章</a>写得比较详细。</p>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="https://www.cnblogs.com/baitongtong/p/5863938.html">Reveal使用教程</a><br><a href="https://blog.csdn.net/hello_hwc/article/details/69365095">iOS 10越狱和Reveal 8分析三方App UI框架教程</a></p>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>Reveal</tag>
+        <tag>调试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>brew 基本使用</title>
+    <url>/blog/202103200617.html</url>
+    <content><![CDATA[<h2 id="更新-brew"><a href="#更新-brew" class="headerlink" title="更新 brew"></a>更新 brew</h2><p><code>brew update</code></p>
+<h2 id="更新包"><a href="#更新包" class="headerlink" title="更新包"></a>更新包</h2><ul>
+<li>查询需要更新的包 <code>brew outdated</code></li>
+<li>更新所有包 <code>brew upgrade</code></li>
+<li>更新指定包 <code>brew upgrade $name</code></li>
+</ul>
+<h2 id="清理旧版本"><a href="#清理旧版本" class="headerlink" title="清理旧版本"></a>清理旧版本</h2><ul>
+<li>清除所有包的旧版本 <code>brew cleanup</code></li>
+<li>清除指定包的旧版本 <code>brew cleanup $name</code></li>
+<li>查看可清除的旧版本 <code>brew cleanup -n</code></li>
+</ul>
+<h2 id="锁定不想更新的包"><a href="#锁定不想更新的包" class="headerlink" title="锁定不想更新的包"></a>锁定不想更新的包</h2><ul>
+<li>锁定某个包 <code>brew pin $name</code></li>
+<li>取消锁定 <code>brew pin $name</code></li>
+</ul>
+<h2 id="查询库相关信息"><a href="#查询库相关信息" class="headerlink" title="查询库相关信息"></a>查询库相关信息</h2><ul>
+<li>查询某个包的信息 <code>brew info $name</code></li>
+<li>查询所有安装包 <code>brew info</code></li>
+<li>查询包的依赖关系 <code>brew deps</code></li>
+<li>查看已安装的包的依赖，树形显示 <code>brew deps --installed --tree</code></li>
+<li>检查 <code>brew doctor</code></li>
+<li>打开应用网站 <code>brew home $name</code></li>
+</ul>
+]]></content>
+      <categories>
+        <category>brew</category>
+      </categories>
+      <tags>
+        <tag>brew</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git clone 使用 ssh 为什么还要输入密码</title>
+    <url>/blog/202103200330.html</url>
+    <content><![CDATA[<p>用 ssh 克隆代码后，push 和 pull 都需要输入密码。这是因为我们在最开始创建公私钥的时候，设置了访问私钥需要密码导致的。</p>
+<p>我们可以进入 ～&#x2F;.ssh 目录下执行这个代码进行密码修改：</p>
+<p><code>ssh-keygen -f id_rsa -p</code></p>
+<p>然后先输入原密码，在设置<strong>新密码</strong>的时候<strong>回车</strong>就可以，确认密码一样回车。</p>
+]]></content>
+      <categories>
+        <category>问题</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>iOS 上线前准备的东西</title>
+    <url>/blog/202103200619.html</url>
+    <content><![CDATA[<h3 id="App-信息"><a href="#App-信息" class="headerlink" title="App 信息"></a>App 信息</h3><ol>
+<li>名称 <del>25字</del></li>
+<li>隐私政策网址(URL)  <code>链接至您的隐私政策的网址 (URL)。所有 App 都必须提供隐私政策。</code></li>
+<li>副标题 <del>30字</del> <code>这是您 App 的一份摘要，它会显示在 iOS 11 或更高版本的 App Store 以及 macOS Mojave 或更高版本的 Mac App Store 中的 App 名称下方。</code></li>
+<li>分级  <code>此 App 分级将在所有平台的 App Store 中显示。此分级根据分级限制最高的 App 平台而定</code></li>
+<li>主要语言 <code>如果某个 App Store 地区没有提供本地化的 App 信息，那么 App 信息将以主要语言呈现。了解更多</code></li>
+<li>类别 <code>最能准确描述此 App 的类别</code></li>
+</ol>
+<h3 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h3><ol>
+<li>App 预览和屏幕快照 <code>屏幕快照必须为 JPG 或 PNG 格式，且必须采用 RGB 颜色空间。App 预览必须为 M4V、MP4 或 MOV 格式，且不能超过 500 MB。了解更多</code></li>
+<li>宣传文本 <del>170字</del> <code>宣传文本可使您在无需提交更新请求的情况下，通知 App Store 访客当前最新的 App 功能。如果客户的设备运行 iOS 11 或更高版本，以及 macOS 10.13 或更高版本，那么在 App Store 中，宣传文本会显示在您的 App 描述上方。</code></li>
+<li>关键词 <del>100字</del> <code>添加一个或多个关键词以描述您的 App。关键词将使 App Store 搜索结果更加准确。关键词之间用英文逗号或中文逗号（或两者混合使用）分隔。</code></li>
+<li>描述 <del>4000字</del><code>对您 App 的描述，用以详细说明特性和功能。它还将用于您的 Apple Watch App。</code></li>
+<li>技术支持网址(URL) <code>您的 App 技术支持信息网址(URL)。该网址(URL)将会在 App Store 中显示。</code></li>
+<li>营销网址(URL) <del>可不填</del><code>您的 App 营销信息网址(URL)。该网址(URL)会在 App Store 中显示。</code></li>
+</ol>
+<h3 id="App-综合信息"><a href="#App-综合信息" class="headerlink" title="App 综合信息"></a>App 综合信息</h3><ol>
+<li>版权 <code>拥有您的 App 专有权的人员或实体的名称，前面是获得权利的年份（例如“2008 Acme Inc”）。请勿提供网址(URL)。</code></li>
+<li>商务代表联系信息 <code>您可以为您的 App 在韩国 App Store 中提供额外信息，这一额外信息只会显示在韩国 App Store 中。</code></li>
+<li>路由 App 覆盖地区文件 <del>可不填</del> <code>指定您的 App 所支持的区域。文件格式必须为 .geojson 并且只能包含一个 MultiPolygon 元素。</code></li>
+</ol>
+<h3 id="App-审核信息"><a href="#App-审核信息" class="headerlink" title="App 审核信息"></a>App 审核信息</h3><ol>
+<li>登录信息 <code>此用户名和密码可让我们登录您的 App 以审查所有功能。如果用户使用社交媒体登录，请提供我们可以使用的帐户信息。该帐户信息须有效，并且在审核期间保持可用的状态。</code></li>
+<li>备注 <code>对审核过程会有所帮助的、有关您 App 的额外信息, 包括在测试中需要的 App 特别设置等。</code></li>
+<li>附件 <code>您可以附加特定的 App 文稿、演示视频和 其他内容，以防止 App 审核延期。请确保 您的文件使用下列扩展名：.pdf、.doc、 .docx、.rtf、.pages、.xls、.xlsx、 .numbers、.zip、.rar、.plist、.crash、 .jpg、.png、.mp4 或 .avi。</code></li>
+<li>联系信息 <code>当 App 审核团队有任何问题或需要额外信息时, 您所在机构的联系人信息。</code></li>
+</ol>
+<h3 id="填写说明"><a href="#填写说明" class="headerlink" title="填写说明"></a>填写说明</h3><ul>
+<li>测试账户</li>
+<li>支付说明</li>
+</ul>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>审核</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>下载应用网站</title>
+    <url>/blog/202103200600.html</url>
+    <content><![CDATA[<p><strong>不确保网站的安全，请仔细甄别。</strong></p>
+<ul>
+<li><a href="https://xclient.info/">xclient</a></li>
+<li><a href="https://www.digit77.com/">digit77</a></li>
+<li><a href="https://www.macappstorrent.com/">macappstorrent</a></li>
+<li><a href="https://mac-torrent-download.net/">mac-torrent</a></li>
+<li><a href="http://www.sdifen.com/">sdifen</a></li>
+<li><a href="https://www.waitsun.com/">waitsun</a></li>
+<li><a href="https://www.macxin.com/">macxin</a></li>
+<li><a href="https://www.94afx.com/">94afx</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Mac</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>应用下载</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在 Atom 中使用正则匹配</title>
+    <url>/blog/202103200543.html</url>
+    <content><![CDATA[<p>JSON原始数据(只拿取小部分数据进行演示):</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;image_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;image_url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;图片URL&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;author_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;作者名称&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;author_icon&quot;</span><span class="punctuation">:</span> <span class="string">&quot;作者头像&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;image_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;image_url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;图片URL&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;author_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;作者名称&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;author_icon&quot;</span><span class="punctuation">:</span> <span class="string">&quot;作者头像&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;image_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;3&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;image_url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;图片URL&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;author_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;作者名称&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;author_icon&quot;</span><span class="punctuation">:</span> <span class="string">&quot;作者头像&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>我们希望把JSON原始数据中所有<code>image_id</code>的<strong>字符串类型的</strong>值都替换为<strong>数值类型</strong>, 结果数据如下:</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;image_id&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;image_url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;图片URL&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;author_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;作者名称&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;author_icon&quot;</span><span class="punctuation">:</span> <span class="string">&quot;作者头像&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;image_id&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;image_url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;图片URL&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;author_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;作者名称&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;author_icon&quot;</span><span class="punctuation">:</span> <span class="string">&quot;作者头像&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;image_id&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;image_url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;图片URL&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;author_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;作者名称&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;author_icon&quot;</span><span class="punctuation">:</span> <span class="string">&quot;作者头像&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><ol>
+<li><p>选择替换中的正则替换<br><img src="https://user-gold-cdn.xitu.io/2019/5/30/16b082f7f5618265?w=2082&h=250&f=jpeg&s=79521"></p>
+</li>
+<li><p>输入查询条件<br><code>&quot;image_id&quot;: &quot;(\d+)&quot;</code><br><strong>注意</strong>: <code>\d+</code> 必须要用 <code>()</code>, 应为替换的时候要用的里面的数字</p>
+</li>
+<li><p>输入替换条件<br><code>&quot;image_id&quot;: $1</code><br><strong>注意</strong>: <code>$1</code> 即为输入条件<code>()</code>内的参数, 如果有多个参数查询条件用<code>()</code>, 替换时变量依次对应<code>$1、$2、$3...</code></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Atom</category>
+      </categories>
+      <tags>
+        <tag>正则</tag>
+        <tag>问题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在在命令行打印frame</title>
+    <url>/blog/202103200548.html</url>
+    <content><![CDATA[<h1 id="如何在在命令行打印frame"><a href="#如何在在命令行打印frame" class="headerlink" title="如何在在命令行打印frame"></a>如何在在命令行打印frame</h1><ol>
+<li>在根目录创建 <code>.lldbinit</code> 文件夹，如果已存请在忽略这一步</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">touch ~/.lldbinit</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>在<code>.lldbinit</code>导入<code>UIKit</code>, 执行下面两句话</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo display @import UIKit &gt;&gt; ~/.lldbinit</span><br><span class="line">echo target stop-hook add -o \&quot;target stop-hook disable\&quot; &gt;&gt; ~/.lldbinit</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Xcode</category>
+      </categories>
+      <tags>
+        <tag>frame</tag>
+        <tag>lldb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>快速断点到当前方法内部的 return 返回</title>
+    <url>/blog/202103200607.html</url>
+    <content><![CDATA[<ol>
+<li>首先在当前方法开始处打断电</li>
+<li><code>br set -p return</code></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Xcode</category>
+      </categories>
+      <tags>
+        <tag>调试</tag>
+        <tag>断点</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>显示 Xcode build 时间</title>
+    <url>/blog/202103200558.html</url>
+    <content><![CDATA[<ol>
+<li><code>defaults write com.apple.dt.Xcode ShowBuildOperationDuration YES</code> 需要重启 Xcode</li>
+<li><code>Product-&gt;Perform Action-&gt;Build With Timing Summary</code> 显示详细的时间</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Xcode</category>
+      </categories>
+      <tags>
+        <tag>调试</tag>
+        <tag>启动时间</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用断点判断内存泄漏</title>
+    <url>/blog/202103200609.html</url>
+    <content><![CDATA[<p><a href="https://sarunw.com/posts/easy-way-to-detect-retain-cycle-in-view-controller/">用断点判断内存泄漏</a></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Symbol</td>
+<td>-[UIViewController dealloc]</td>
+</tr>
+<tr>
+<td>Module</td>
+<td>Leave blank or UIKitCore</td>
+</tr>
+<tr>
+<td>Action: Sound</td>
+<td>pop or whatever sound you like</td>
+</tr>
+<tr>
+<td>Action: Log Message</td>
+<td>— dealloc @(id)[$arg1 description]@ or what ever you want to print in debug consoleOptions</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Xcode</category>
+      </categories>
+      <tags>
+        <tag>调试</tag>
+        <tag>断点</tag>
+        <tag>内存泄露</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>终端如何进行代理</title>
+    <url>/blog/202103200553.html</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export http_proxy=http://127.0.0.1:59400                                </span><br><span class="line">export https_proxy=$http_proxy</span><br><span class="line">export ftp_proxy=$http_proxy</span><br><span class="line">export rsync_proxy=$http_proxy</span><br><span class="line">export no_proxy=&quot;localhost,127.0.0.1,.dade.com&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>59400</strong> 为自己代理端口</p>
+]]></content>
+      <categories>
+        <category>问题</category>
+      </categories>
+      <tags>
+        <tag>terminal</tag>
+        <tag>代理</tag>
+      </tags>
+  </entry>
+</search>

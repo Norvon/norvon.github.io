@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Norvon</title>
+  
+  
+  <link href="https://norvon.cn/atom.xml" rel="self"/>
+  
+  <link href="https://norvon.cn/"/>
+  <updated>2025-03-31T12:55:54.258Z</updated>
+  <id>https://norvon.cn/</id>
+  
+  <author>
+    <name>Norvon</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac 安装软件记录</title>
+    <link href="https://norvon.cn/blog/202503290333.html"/>
+    <id>https://norvon.cn/blog/202503290333.html</id>
+    <published>2025-03-29T03:33:21.000Z</published>
+    <updated>2025-03-31T12:55:54.258Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;这里整理了一些在 macOS 上实用的工具，涵盖开发、生产力、系统管理等多个方面，并附上简要介绍和下载链接。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;h2 id=&quot;剪贴板工具&quot;&gt;&lt;a href=&quot;#剪贴板工具&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Mac" scheme="https://norvon.cn/categories/Mac/"/>
+    
+    
+    <category term="软件" scheme="https://norvon.cn/tags/%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="Mac" scheme="https://norvon.cn/tags/Mac/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS 上线前准备的东西</title>
+    <link href="https://norvon.cn/blog/202103200619.html"/>
+    <id>https://norvon.cn/blog/202103200619.html</id>
+    <published>2021-03-20T06:19:30.000Z</published>
+    <updated>2025-03-31T12:55:54.258Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;App-信息&quot;&gt;&lt;a href=&quot;#App-信息&quot; class=&quot;headerlink&quot; title=&quot;App 信息&quot;&gt;&lt;/a&gt;App 信息&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;名称 &lt;del&gt;25字&lt;/del&gt;&lt;/li&gt;
+&lt;li&gt;隐私政策网址(URL) </summary>
+        
+      
+    
+    
+    
+    <category term="iOS" scheme="https://norvon.cn/categories/iOS/"/>
+    
+    
+    <category term="审核" scheme="https://norvon.cn/tags/%E5%AE%A1%E6%A0%B8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>brew 基本使用</title>
+    <link href="https://norvon.cn/blog/202103200617.html"/>
+    <id>https://norvon.cn/blog/202103200617.html</id>
+    <published>2021-03-20T06:17:30.000Z</published>
+    <updated>2025-03-31T12:55:54.258Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;更新-brew&quot;&gt;&lt;a href=&quot;#更新-brew&quot; class=&quot;headerlink&quot; title=&quot;更新 brew&quot;&gt;&lt;/a&gt;更新 brew&lt;/h2&gt;&lt;p&gt;&lt;code&gt;brew update&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;更新包&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="brew" scheme="https://norvon.cn/categories/brew/"/>
+    
+    
+    <category term="brew" scheme="https://norvon.cn/tags/brew/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Apple 审核回复模版</title>
+    <link href="https://norvon.cn/blog/202103200615.html"/>
+    <id>https://norvon.cn/blog/202103200615.html</id>
+    <published>2021-03-20T06:15:59.000Z</published>
+    <updated>2025-03-31T12:55:54.257Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Dear Apple Reviewer:&lt;/p&gt;
+&lt;p&gt;Thank you for your notification.&lt;br&gt;I have received the review results of your company and I would like to</summary>
+        
+      
+    
+    
+    
+    <category term="iOS" scheme="https://norvon.cn/categories/iOS/"/>
+    
+    
+    <category term="审核" scheme="https://norvon.cn/tags/%E5%AE%A1%E6%A0%B8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用断点判断内存泄漏</title>
+    <link href="https://norvon.cn/blog/202103200609.html"/>
+    <id>https://norvon.cn/blog/202103200609.html</id>
+    <published>2021-03-20T06:09:30.000Z</published>
+    <updated>2025-03-31T12:55:54.258Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Xcode" scheme="https://norvon.cn/categories/Xcode/"/>
+    
+    
+    <category term="调试" scheme="https://norvon.cn/tags/%E8%B0%83%E8%AF%95/"/>
+    
+    <category term="断点" scheme="https://norvon.cn/tags/%E6%96%AD%E7%82%B9/"/>
+    
+    <category term="内存泄露" scheme="https://norvon.cn/tags/%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>快速断点到当前方法内部的 return 返回</title>
+    <link href="https://norvon.cn/blog/202103200607.html"/>
+    <id>https://norvon.cn/blog/202103200607.html</id>
+    <published>2021-03-20T06:07:53.000Z</published>
+    <updated>2025-03-31T12:55:54.258Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;首先在当前方法开始处打断电&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;br set -p</summary>
+        
+      
+    
+    
+    
+    <category term="Xcode" scheme="https://norvon.cn/categories/Xcode/"/>
+    
+    
+    <category term="调试" scheme="https://norvon.cn/tags/%E8%B0%83%E8%AF%95/"/>
+    
+    <category term="断点" scheme="https://norvon.cn/tags/%E6%96%AD%E7%82%B9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>下载应用网站</title>
+    <link href="https://norvon.cn/blog/202103200600.html"/>
+    <id>https://norvon.cn/blog/202103200600.html</id>
+    <published>2021-03-20T06:00:13.000Z</published>
+    <updated>2025-03-31T12:55:54.258Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;不确保网站的安全，请仔细甄别。&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://xclient.info/&quot;&gt;xclient&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Mac" scheme="https://norvon.cn/categories/Mac/"/>
+    
+    
+    <category term="Mac" scheme="https://norvon.cn/tags/Mac/"/>
+    
+    <category term="应用下载" scheme="https://norvon.cn/tags/%E5%BA%94%E7%94%A8%E4%B8%8B%E8%BD%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>显示 Xcode build 时间</title>
+    <link href="https://norvon.cn/blog/202103200558.html"/>
+    <id>https://norvon.cn/blog/202103200558.html</id>
+    <published>2021-03-20T05:58:27.000Z</published>
+    <updated>2025-03-31T12:55:54.258Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;defaults write com.apple.dt.Xcode ShowBuildOperationDuration YES&lt;/code&gt; 需要重启 Xcode&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Product-&amp;gt;Perform</summary>
+        
+      
+    
+    
+    
+    <category term="Xcode" scheme="https://norvon.cn/categories/Xcode/"/>
+    
+    
+    <category term="调试" scheme="https://norvon.cn/tags/%E8%B0%83%E8%AF%95/"/>
+    
+    <category term="启动时间" scheme="https://norvon.cn/tags/%E5%90%AF%E5%8A%A8%E6%97%B6%E9%97%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>终端如何进行代理</title>
+    <link href="https://norvon.cn/blog/202103200553.html"/>
+    <id>https://norvon.cn/blog/202103200553.html</id>
+    <published>2021-03-20T05:53:03.000Z</published>
+    <updated>2025-03-31T12:55:54.259Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="问题" scheme="https://norvon.cn/categories/%E9%97%AE%E9%A2%98/"/>
+    
+    
+    <category term="terminal" scheme="https://norvon.cn/tags/terminal/"/>
+    
+    <category term="代理" scheme="https://norvon.cn/tags/%E4%BB%A3%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何在在命令行打印frame</title>
+    <link href="https://norvon.cn/blog/202103200548.html"/>
+    <id>https://norvon.cn/blog/202103200548.html</id>
+    <published>2021-03-20T05:48:48.000Z</published>
+    <updated>2025-03-31T12:55:54.258Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;如何在在命令行打印frame&quot;&gt;&lt;a href=&quot;#如何在在命令行打印frame&quot; class=&quot;headerlink&quot; title=&quot;如何在在命令行打印frame&quot;&gt;&lt;/a&gt;如何在在命令行打印frame&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;在根目录创建</summary>
+        
+      
+    
+    
+    
+    <category term="Xcode" scheme="https://norvon.cn/categories/Xcode/"/>
+    
+    
+    <category term="frame" scheme="https://norvon.cn/tags/frame/"/>
+    
+    <category term="lldb" scheme="https://norvon.cn/tags/lldb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Reveal 调试应用</title>
+    <link href="https://norvon.cn/blog/202103200546.html"/>
+    <id>https://norvon.cn/blog/202103200546.html</id>
+    <published>2021-03-20T05:46:34.000Z</published>
+    <updated>2025-03-31T12:55:54.258Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前提&quot;&gt;&lt;a href=&quot;#前提&quot; class=&quot;headerlink&quot; title=&quot;前提&quot;&gt;&lt;/a&gt;前提&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Xcode 9.4.1&lt;/li&gt;
+&lt;li&gt;Reveal 13(10035）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="iOS" scheme="https://norvon.cn/categories/iOS/"/>
+    
+    
+    <category term="Reveal" scheme="https://norvon.cn/tags/Reveal/"/>
+    
+    <category term="调试" scheme="https://norvon.cn/tags/%E8%B0%83%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在 Atom 中使用正则匹配</title>
+    <link href="https://norvon.cn/blog/202103200543.html"/>
+    <id>https://norvon.cn/blog/202103200543.html</id>
+    <published>2021-03-20T05:43:59.000Z</published>
+    <updated>2025-03-31T12:55:54.258Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;JSON原始数据(只拿取小部分数据进行演示):&lt;/p&gt;
+&lt;figure class=&quot;highlight json&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="Atom" scheme="https://norvon.cn/categories/Atom/"/>
+    
+    
+    <category term="正则" scheme="https://norvon.cn/tags/%E6%AD%A3%E5%88%99/"/>
+    
+    <category term="问题" scheme="https://norvon.cn/tags/%E9%97%AE%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git clone 使用 ssh 为什么还要输入密码</title>
+    <link href="https://norvon.cn/blog/202103200330.html"/>
+    <id>https://norvon.cn/blog/202103200330.html</id>
+    <published>2021-03-20T03:30:02.000Z</published>
+    <updated>2025-03-31T12:55:54.258Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;用 ssh 克隆代码后，push 和 pull 都需要输入密码。这是因为我们在最开始创建公私钥的时候，设置了访问私钥需要密码导致的。&lt;/p&gt;
+&lt;p&gt;我们可以进入 ～&amp;#x2F;.ssh 目录下执行这个代码进行密码修改：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ssh-keygen -f</summary>
+        
+      
+    
+    
+    
+    <category term="问题" scheme="https://norvon.cn/categories/%E9%97%AE%E9%A2%98/"/>
+    
+    
+    <category term="git" scheme="https://norvon.cn/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CocoaPods 相关问题</title>
+    <link href="https://norvon.cn/blog/201903051407.html"/>
+    <id>https://norvon.cn/blog/201903051407.html</id>
+    <published>2019-03-05T14:07:59.000Z</published>
+    <updated>2025-03-31T12:55:54.257Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;这里记录CocoaPods出现的一些问题和解决方法。&lt;/p&gt;
+&lt;h1 id=&quot;错误一&quot;&gt;&lt;a href=&quot;#错误一&quot; class=&quot;headerlink&quot; title=&quot;错误一&quot;&gt;&lt;/a&gt;错误一&lt;/h1&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ gem source -a https://gems.ruby-china.org&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Error fetching https://gems.ruby-china.org:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	bad response Not Found 404 (https://gems.ruby-china.org/specs.4.8.gz)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="iOS" scheme="https://norvon.cn/categories/iOS/"/>
+    
+    
+    <category term="CocoaPods" scheme="https://norvon.cn/tags/CocoaPods/"/>
+    
+  </entry>
+  
+</feed>

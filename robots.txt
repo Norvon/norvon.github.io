@@ -1,0 +1,6 @@
+# hexo robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://norvon.cn/sitemap.xml
+Sitemap: https://norvon.cn/baidusitemap.xml
