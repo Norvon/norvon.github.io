@@ -318,21 +318,6 @@
       </tags>
   </entry>
   <entry>
-    <title>git clone 使用 ssh 为什么还要输入密码</title>
-    <url>/blog/202103200330.html</url>
-    <content><![CDATA[<p>用 ssh 克隆代码后，push 和 pull 都需要输入密码。这是因为我们在最开始创建公私钥的时候，设置了访问私钥需要密码导致的。</p>
-<p>我们可以进入 ～&#x2F;.ssh 目录下执行这个代码进行密码修改：</p>
-<p><code>ssh-keygen -f id_rsa -p</code></p>
-<p>然后先输入原密码，在设置<strong>新密码</strong>的时候<strong>回车</strong>就可以，确认密码一样回车。</p>
-]]></content>
-      <categories>
-        <category>问题</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>brew 基本使用</title>
     <url>/blog/202103200617.html</url>
     <content><![CDATA[<h2 id="更新-brew"><a href="#更新-brew" class="headerlink" title="更新 brew"></a>更新 brew</h2><p><code>brew update</code></p>
@@ -364,6 +349,21 @@
       </categories>
       <tags>
         <tag>brew</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git clone 使用 ssh 为什么还要输入密码</title>
+    <url>/blog/202103200330.html</url>
+    <content><![CDATA[<p>用 ssh 克隆代码后，push 和 pull 都需要输入密码。这是因为我们在最开始创建公私钥的时候，设置了访问私钥需要密码导致的。</p>
+<p>我们可以进入 ～&#x2F;.ssh 目录下执行这个代码进行密码修改：</p>
+<p><code>ssh-keygen -f id_rsa -p</code></p>
+<p>然后先输入原密码，在设置<strong>新密码</strong>的时候<strong>回车</strong>就可以，确认密码一样回车。</p>
+]]></content>
+      <categories>
+        <category>问题</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -432,6 +432,25 @@
       </tags>
   </entry>
   <entry>
+    <title>如何在在命令行打印frame</title>
+    <url>/blog/202103200548.html</url>
+    <content><![CDATA[<h1 id="如何在在命令行打印frame"><a href="#如何在在命令行打印frame" class="headerlink" title="如何在在命令行打印frame"></a>如何在在命令行打印frame</h1><ol>
+<li>在根目录创建 <code>.lldbinit</code> 文件夹，如果已存请在忽略这一步</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">touch ~/.lldbinit</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>在<code>.lldbinit</code>导入<code>UIKit</code>, 执行下面两句话</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo display @import UIKit &gt;&gt; ~/.lldbinit</span><br><span class="line">echo target stop-hook add -o \&quot;target stop-hook disable\&quot; &gt;&gt; ~/.lldbinit</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Xcode</category>
+      </categories>
+      <tags>
+        <tag>frame</tag>
+        <tag>lldb</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>在 Atom 中使用正则匹配</title>
     <url>/blog/202103200543.html</url>
     <content><![CDATA[<p>JSON原始数据(只拿取小部分数据进行演示):</p>
@@ -459,25 +478,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何在在命令行打印frame</title>
-    <url>/blog/202103200548.html</url>
-    <content><![CDATA[<h1 id="如何在在命令行打印frame"><a href="#如何在在命令行打印frame" class="headerlink" title="如何在在命令行打印frame"></a>如何在在命令行打印frame</h1><ol>
-<li>在根目录创建 <code>.lldbinit</code> 文件夹，如果已存请在忽略这一步</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">touch ~/.lldbinit</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>在<code>.lldbinit</code>导入<code>UIKit</code>, 执行下面两句话</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo display @import UIKit &gt;&gt; ~/.lldbinit</span><br><span class="line">echo target stop-hook add -o \&quot;target stop-hook disable\&quot; &gt;&gt; ~/.lldbinit</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Xcode</category>
-      </categories>
-      <tags>
-        <tag>frame</tag>
-        <tag>lldb</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>快速断点到当前方法内部的 return 返回</title>
     <url>/blog/202103200607.html</url>
     <content><![CDATA[<ol>
@@ -491,22 +491,6 @@
       <tags>
         <tag>调试</tag>
         <tag>断点</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>显示 Xcode build 时间</title>
-    <url>/blog/202103200558.html</url>
-    <content><![CDATA[<ol>
-<li><code>defaults write com.apple.dt.Xcode ShowBuildOperationDuration YES</code> 需要重启 Xcode</li>
-<li><code>Product-&gt;Perform Action-&gt;Build With Timing Summary</code> 显示详细的时间</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Xcode</category>
-      </categories>
-      <tags>
-        <tag>调试</tag>
-        <tag>启动时间</tag>
       </tags>
   </entry>
   <entry>
@@ -545,6 +529,22 @@
         <tag>调试</tag>
         <tag>断点</tag>
         <tag>内存泄露</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>显示 Xcode build 时间</title>
+    <url>/blog/202103200558.html</url>
+    <content><![CDATA[<ol>
+<li><code>defaults write com.apple.dt.Xcode ShowBuildOperationDuration YES</code> 需要重启 Xcode</li>
+<li><code>Product-&gt;Perform Action-&gt;Build With Timing Summary</code> 显示详细的时间</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Xcode</category>
+      </categories>
+      <tags>
+        <tag>调试</tag>
+        <tag>启动时间</tag>
       </tags>
   </entry>
   <entry>
