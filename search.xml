@@ -290,6 +290,40 @@
       </tags>
   </entry>
   <entry>
+    <title>brew 基本使用</title>
+    <url>/blog/202103200617.html</url>
+    <content><![CDATA[<h2 id="更新-brew"><a href="#更新-brew" class="headerlink" title="更新 brew"></a>更新 brew</h2><p><code>brew update</code></p>
+<h2 id="更新包"><a href="#更新包" class="headerlink" title="更新包"></a>更新包</h2><ul>
+<li>查询需要更新的包 <code>brew outdated</code></li>
+<li>更新所有包 <code>brew upgrade</code></li>
+<li>更新指定包 <code>brew upgrade $name</code></li>
+</ul>
+<h2 id="清理旧版本"><a href="#清理旧版本" class="headerlink" title="清理旧版本"></a>清理旧版本</h2><ul>
+<li>清除所有包的旧版本 <code>brew cleanup</code></li>
+<li>清除指定包的旧版本 <code>brew cleanup $name</code></li>
+<li>查看可清除的旧版本 <code>brew cleanup -n</code></li>
+</ul>
+<h2 id="锁定不想更新的包"><a href="#锁定不想更新的包" class="headerlink" title="锁定不想更新的包"></a>锁定不想更新的包</h2><ul>
+<li>锁定某个包 <code>brew pin $name</code></li>
+<li>取消锁定 <code>brew pin $name</code></li>
+</ul>
+<h2 id="查询库相关信息"><a href="#查询库相关信息" class="headerlink" title="查询库相关信息"></a>查询库相关信息</h2><ul>
+<li>查询某个包的信息 <code>brew info $name</code></li>
+<li>查询所有安装包 <code>brew info</code></li>
+<li>查询包的依赖关系 <code>brew deps</code></li>
+<li>查看已安装的包的依赖，树形显示 <code>brew deps --installed --tree</code></li>
+<li>检查 <code>brew doctor</code></li>
+<li>打开应用网站 <code>brew home $name</code></li>
+</ul>
+]]></content>
+      <categories>
+        <category>brew</category>
+      </categories>
+      <tags>
+        <tag>brew</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git clone 使用 ssh 为什么还要输入密码</title>
     <url>/blog/202103200330.html</url>
     <content><![CDATA[<p>用 ssh 克隆代码后，push 和 pull 都需要输入密码。这是因为我们在最开始创建公私钥的时候，设置了访问私钥需要密码导致的。</p>
@@ -394,40 +428,6 @@
       <tags>
         <tag>正则</tag>
         <tag>问题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>brew 基本使用</title>
-    <url>/blog/202103200617.html</url>
-    <content><![CDATA[<h2 id="更新-brew"><a href="#更新-brew" class="headerlink" title="更新 brew"></a>更新 brew</h2><p><code>brew update</code></p>
-<h2 id="更新包"><a href="#更新包" class="headerlink" title="更新包"></a>更新包</h2><ul>
-<li>查询需要更新的包 <code>brew outdated</code></li>
-<li>更新所有包 <code>brew upgrade</code></li>
-<li>更新指定包 <code>brew upgrade $name</code></li>
-</ul>
-<h2 id="清理旧版本"><a href="#清理旧版本" class="headerlink" title="清理旧版本"></a>清理旧版本</h2><ul>
-<li>清除所有包的旧版本 <code>brew cleanup</code></li>
-<li>清除指定包的旧版本 <code>brew cleanup $name</code></li>
-<li>查看可清除的旧版本 <code>brew cleanup -n</code></li>
-</ul>
-<h2 id="锁定不想更新的包"><a href="#锁定不想更新的包" class="headerlink" title="锁定不想更新的包"></a>锁定不想更新的包</h2><ul>
-<li>锁定某个包 <code>brew pin $name</code></li>
-<li>取消锁定 <code>brew pin $name</code></li>
-</ul>
-<h2 id="查询库相关信息"><a href="#查询库相关信息" class="headerlink" title="查询库相关信息"></a>查询库相关信息</h2><ul>
-<li>查询某个包的信息 <code>brew info $name</code></li>
-<li>查询所有安装包 <code>brew info</code></li>
-<li>查询包的依赖关系 <code>brew deps</code></li>
-<li>查看已安装的包的依赖，树形显示 <code>brew deps --installed --tree</code></li>
-<li>检查 <code>brew doctor</code></li>
-<li>打开应用网站 <code>brew home $name</code></li>
-</ul>
-]]></content>
-      <categories>
-        <category>brew</category>
-      </categories>
-      <tags>
-        <tag>brew</tag>
       </tags>
   </entry>
   <entry>
