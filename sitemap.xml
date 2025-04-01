@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://norvon.cn/blog/202103200553.html</loc>
+    
+    <lastmod>2025-04-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://norvon.cn/categories/index.html</loc>
     
     <lastmod>2025-04-01</lastmod>
@@ -129,15 +138,6 @@
   
   <url>
     <loc>https://norvon.cn/blog/202103200609.html</loc>
-    
-    <lastmod>2025-04-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://norvon.cn/blog/202103200553.html</loc>
     
     <lastmod>2025-04-01</lastmod>
     
