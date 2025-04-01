@@ -48,6 +48,34 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo Spawn failed</title>
+    <url>/blog/202503311329.html</url>
+    <content><![CDATA[<p>为了提升博客的 SEO 优化效果，我尝试将 jsdelivr CDN 本地化，以解决可能存在的加载速度问题。然而，在执行 Hexo d 命令部署博客时，却遭遇了令人困扰的 “Spawn failed” 错误，导致部署中断。本文将详细记录我如何一步步排查并最终解决这一问题的过程，希望能为遇到类似困境的 Hexo 用户提供有价值的参考和帮助。</p>
+<h2 id="问题分析和解决"><a href="#问题分析和解决" class="headerlink" title="问题分析和解决"></a>问题分析和解决</h2><p>本地化修改完成后提交代码显示如下报错：</p>
+<p><img src="https://raw.githubusercontent.com/Norvon/norvon.github.io/image/images/90031b0c6dc77dbfdf8e25bf4465825f.png" alt="Snipaste_2025-03-31_20-53-58"></p>
+<p>看着是远端断开了连接然后进行了以下尝试都以失败告终。</p>
+<ol>
+<li>重启科学上网工具 &amp; 命令行科学上网</li>
+<li>删除 .deploy_git 文件</li>
+<li>修改 git postBuffer </li>
+<li>进入 .deploy_git 强推</li>
+</ol>
+<p>想着可能还是网络问题，那我用 Github Actions 自动化应该没问题了吧。依然报错，具体错误如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">remote: error: GH013: Repository rule violations found for refs/heads/master.        </span><br><span class="line">remote: </span><br><span class="line">remote: - GITHUB PUSH PROTECTION        </span><br><span class="line">remote:   —————————————————————————————————————————        </span><br><span class="line">remote:     Resolve the following violations before pushing again        </span><br><span class="line">remote: </span><br><span class="line">remote:     - Push cannot contain secrets        </span><br><span class="line">remote: </span><br><span class="line">remote:             </span><br><span class="line">remote:      (?) Learn how to resolve a blocked push        </span><br><span class="line">remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        </span><br><span class="line">remote:             </span><br><span class="line">remote:      (?) This repository does not have Secret Scanning enabled, but is eligible. Enable Secret Scanning to view and manage detected secrets.        </span><br><span class="line">remote:      Visit the repository settings page, https://github.com/Norvon/norvon.github.io/settings/security_analysis        </span><br><span class="line">remote:             </span><br><span class="line">remote:             </span><br><span class="line">remote:       —— Tencent Cloud Secret ID ———————————————————————————        </span><br><span class="line">remote:        locations:        </span><br><span class="line">remote:          - commit: cfe83ee85b30f513ef5002d23fdd684629fb330c        </span><br><span class="line">remote:            path: pluginsSrc/twikoo/dist/twikoo.all.min.js:2        </span><br><span class="line">remote:             </span><br><span class="line">remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        </span><br><span class="line">remote:        https://github.com/Norvon/norvon.github.io/security/secret-scanning/unblock-secret/2v57KmGpz07dbIL6GwazSomPnBd        </span><br><span class="line">remote:             </span><br><span class="line">remote: </span><br><span class="line">remote: </span><br><span class="line">To https://github.com/Norvon/norvon.github.io.git</span><br><span class="line"> ! [remote rejected] HEAD -&gt; master (push declined due to repository rule violations)</span><br><span class="line">error: failed to push some refs to &#x27;https://github.com/Norvon/norvon.github.io.git&#x27;</span><br><span class="line">FATAL Something&#x27;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html</span><br><span class="line">Error: Spawn failed</span><br><span class="line">    at ChildProcess.&lt;anonymous&gt; (/home/runner/work/MyBlogCode/MyBlogCode/node_modules/hexo-deployer-git/node_modules/hexo-util/lib/spawn.js:51:21)</span><br><span class="line">    at ChildProcess.emit (node:events:524:28)</span><br><span class="line">    at ChildProcess._handle.onexit (node:internal/child_process:293:12)</span><br><span class="line">Error: Process completed with exit code 2.</span><br></pre></td></tr></table></figure>
+
+<p>从上面的错误可以看到是 <code>pluginsSrc/twikoo/dist/twikoo.all.min.js:2 </code> 里面包含了 <code>Tencent Cloud Secret ID</code> Github 安全检测到了，然后把推送请求拦截了。</p>
+<p>我看了下 <code>pluginsSrc/twikoo/dist/twikoo.all.min.js:2</code> 里面的报错的那个<strong>只是个注释</strong>。我们手动按允许这个推送就行了。具体参考 <a href="https://github.com/twikoojs/twikoo/issues/793">twikoo&#x2F;issues</a> 就行了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>GitHub 的安全扫描功能可以有效防止敏感信息泄露，但有时也会出现误报。在遇到此类问题时，请务必仔细检查错误信息，并根据实际情况采取相应的解决方案。</p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>问题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mac 安装软件记录</title>
     <url>/blog/202503290333.html</url>
     <content><![CDATA[<p>这里整理了一些在 macOS 上实用的工具，涵盖开发、生产力、系统管理等多个方面，并附上简要介绍和下载链接。</p>
@@ -290,6 +318,21 @@
       </tags>
   </entry>
   <entry>
+    <title>git clone 使用 ssh 为什么还要输入密码</title>
+    <url>/blog/202103200330.html</url>
+    <content><![CDATA[<p>用 ssh 克隆代码后，push 和 pull 都需要输入密码。这是因为我们在最开始创建公私钥的时候，设置了访问私钥需要密码导致的。</p>
+<p>我们可以进入 ～&#x2F;.ssh 目录下执行这个代码进行密码修改：</p>
+<p><code>ssh-keygen -f id_rsa -p</code></p>
+<p>然后先输入原密码，在设置<strong>新密码</strong>的时候<strong>回车</strong>就可以，确认密码一样回车。</p>
+]]></content>
+      <categories>
+        <category>问题</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>brew 基本使用</title>
     <url>/blog/202103200617.html</url>
     <content><![CDATA[<h2 id="更新-brew"><a href="#更新-brew" class="headerlink" title="更新 brew"></a>更新 brew</h2><p><code>brew update</code></p>
@@ -321,21 +364,6 @@
       </categories>
       <tags>
         <tag>brew</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git clone 使用 ssh 为什么还要输入密码</title>
-    <url>/blog/202103200330.html</url>
-    <content><![CDATA[<p>用 ssh 克隆代码后，push 和 pull 都需要输入密码。这是因为我们在最开始创建公私钥的时候，设置了访问私钥需要密码导致的。</p>
-<p>我们可以进入 ～&#x2F;.ssh 目录下执行这个代码进行密码修改：</p>
-<p><code>ssh-keygen -f id_rsa -p</code></p>
-<p>然后先输入原密码，在设置<strong>新密码</strong>的时候<strong>回车</strong>就可以，确认密码一样回车。</p>
-]]></content>
-      <categories>
-        <category>问题</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -426,8 +454,8 @@
         <category>Atom</category>
       </categories>
       <tags>
-        <tag>正则</tag>
         <tag>问题</tag>
+        <tag>正则</tag>
       </tags>
   </entry>
   <entry>
