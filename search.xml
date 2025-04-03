@@ -459,6 +459,22 @@
       </tags>
   </entry>
   <entry>
+    <title>快速断点到当前方法内部的 return 返回</title>
+    <url>/blog/202103200607.html</url>
+    <content><![CDATA[<ol>
+<li>首先在当前方法开始处打断电</li>
+<li><code>br set -p return</code></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Xcode</category>
+      </categories>
+      <tags>
+        <tag>调试</tag>
+        <tag>断点</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何在在命令行打印frame</title>
     <url>/blog/202103200548.html</url>
     <content><![CDATA[<h1 id="如何在在命令行打印frame"><a href="#如何在在命令行打印frame" class="headerlink" title="如何在在命令行打印frame"></a>如何在在命令行打印frame</h1><ol>
@@ -478,22 +494,6 @@
       </tags>
   </entry>
   <entry>
-    <title>快速断点到当前方法内部的 return 返回</title>
-    <url>/blog/202103200607.html</url>
-    <content><![CDATA[<ol>
-<li>首先在当前方法开始处打断电</li>
-<li><code>br set -p return</code></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Xcode</category>
-      </categories>
-      <tags>
-        <tag>调试</tag>
-        <tag>断点</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>显示 Xcode build 时间</title>
     <url>/blog/202103200558.html</url>
     <content><![CDATA[<ol>
@@ -507,6 +507,20 @@
       <tags>
         <tag>调试</tag>
         <tag>启动时间</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>终端如何进行代理</title>
+    <url>/blog/202103200553.html</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export http_proxy=http://127.0.0.1:59400                                </span><br><span class="line">export https_proxy=$http_proxy</span><br><span class="line">export ftp_proxy=$http_proxy</span><br><span class="line">export rsync_proxy=$http_proxy</span><br><span class="line">export no_proxy=&quot;localhost,127.0.0.1,.dade.com&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>59400</strong> 为自己代理端口</p>
+]]></content>
+      <categories>
+        <category>问题</category>
+      </categories>
+      <tags>
+        <tag>terminal</tag>
+        <tag>代理</tag>
       </tags>
   </entry>
   <entry>
@@ -545,20 +559,6 @@
         <tag>调试</tag>
         <tag>断点</tag>
         <tag>内存泄露</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>终端如何进行代理</title>
-    <url>/blog/202103200553.html</url>
-    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export http_proxy=http://127.0.0.1:59400                                </span><br><span class="line">export https_proxy=$http_proxy</span><br><span class="line">export ftp_proxy=$http_proxy</span><br><span class="line">export rsync_proxy=$http_proxy</span><br><span class="line">export no_proxy=&quot;localhost,127.0.0.1,.dade.com&quot;</span><br></pre></td></tr></table></figure>
-<p><strong>59400</strong> 为自己代理端口</p>
-]]></content>
-      <categories>
-        <category>问题</category>
-      </categories>
-      <tags>
-        <tag>terminal</tag>
-        <tag>代理</tag>
       </tags>
   </entry>
 </search>
