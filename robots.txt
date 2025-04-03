@@ -2,5 +2,8 @@
 User-agent: *
 Allow: /
 
+Disallow: /js/
+Disallow: /css/
+
 Sitemap: https://norvon.cn/sitemap.xml
 Sitemap: https://norvon.cn/baidusitemap.xml
