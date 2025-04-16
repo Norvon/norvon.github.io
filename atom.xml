@@ -6,7 +6,7 @@
   <link href="https://norvon.cn/atom.xml" rel="self"/>
   
   <link href="https://norvon.cn/"/>
-  <updated>2025-04-07T05:12:08.388Z</updated>
+  <updated>2025-04-16T08:58:36.306Z</updated>
   <id>https://norvon.cn/</id>
   
   <author>
@@ -17,11 +17,42 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>unc0ver 签名过期重签记录 (ios-app-signer)</title>
+    <link href="https://norvon.cn/blog/202504160637.html"/>
+    <id>https://norvon.cn/blog/202504160637.html</id>
+    <published>2025-04-16T06:37:05.000Z</published>
+    <updated>2025-04-16T08:58:36.306Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;今天心血来潮，翻出了吃灰已久的越狱 iPhone 6s。解锁一看，果然不出所料，Unc0ver 的 App 又变成熟悉的灰色了——签名过期！上次重签还是不知道多久之前的事情，记忆模糊得厉害，在脑子里疯狂搜索了一番，总算想起上次是用</summary>
+        
+      
+    
+    
+    
+    <category term="iOS" scheme="https://norvon.cn/categories/iOS/"/>
+    
+    
+    <category term="iOS" scheme="https://norvon.cn/tags/iOS/"/>
+    
+    <category term="签名" scheme="https://norvon.cn/tags/%E7%AD%BE%E5%90%8D/"/>
+    
+    <category term="iOS app signer" scheme="https://norvon.cn/tags/iOS-app-signer/"/>
+    
+    <category term="越狱" scheme="https://norvon.cn/tags/%E8%B6%8A%E7%8B%B1/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hexo 博客图片自动化：Typora 无缝集成 GitHub 图床教程</title>
     <link href="https://norvon.cn/blog/202504030513.html"/>
     <id>https://norvon.cn/blog/202504030513.html</id>
     <published>2025-04-03T05:13:56.000Z</published>
-    <updated>2025-04-07T05:12:08.388Z</updated>
+    <updated>2025-04-16T08:58:36.306Z</updated>
     
     
       
@@ -51,7 +82,7 @@
     <link href="https://norvon.cn/blog/202503311329.html"/>
     <id>https://norvon.cn/blog/202503311329.html</id>
     <published>2025-03-31T13:29:31.000Z</published>
-    <updated>2025-04-07T05:12:08.388Z</updated>
+    <updated>2025-04-16T08:58:36.306Z</updated>
     
     
       
@@ -78,7 +109,7 @@
     <link href="https://norvon.cn/blog/202503290333.html"/>
     <id>https://norvon.cn/blog/202503290333.html</id>
     <published>2025-03-29T03:33:21.000Z</published>
-    <updated>2025-04-07T05:12:08.388Z</updated>
+    <updated>2025-04-16T08:58:36.306Z</updated>
     
     
       
@@ -107,7 +138,7 @@
     <link href="https://norvon.cn/blog/202103200619.html"/>
     <id>https://norvon.cn/blog/202103200619.html</id>
     <published>2021-03-20T06:19:30.000Z</published>
-    <updated>2025-04-07T05:12:08.389Z</updated>
+    <updated>2025-04-16T08:58:36.306Z</updated>
     
     
       
@@ -134,7 +165,7 @@
     <link href="https://norvon.cn/blog/202103200617.html"/>
     <id>https://norvon.cn/blog/202103200617.html</id>
     <published>2021-03-20T06:17:30.000Z</published>
-    <updated>2025-04-07T05:12:08.388Z</updated>
+    <updated>2025-04-16T08:58:36.306Z</updated>
     
     
       
@@ -160,7 +191,7 @@
     <link href="https://norvon.cn/blog/202103200615.html"/>
     <id>https://norvon.cn/blog/202103200615.html</id>
     <published>2021-03-20T06:15:59.000Z</published>
-    <updated>2025-04-07T05:12:08.388Z</updated>
+    <updated>2025-04-16T08:58:36.306Z</updated>
     
     
       
@@ -186,7 +217,7 @@
     <link href="https://norvon.cn/blog/202103200609.html"/>
     <id>https://norvon.cn/blog/202103200609.html</id>
     <published>2021-03-20T06:09:30.000Z</published>
-    <updated>2025-04-07T05:12:08.389Z</updated>
+    <updated>2025-04-16T08:58:36.307Z</updated>
     
     
       
@@ -215,7 +246,7 @@
     <link href="https://norvon.cn/blog/202103200607.html"/>
     <id>https://norvon.cn/blog/202103200607.html</id>
     <published>2021-03-20T06:07:53.000Z</published>
-    <updated>2025-04-07T05:12:08.389Z</updated>
+    <updated>2025-04-16T08:58:36.306Z</updated>
     
     
       
@@ -244,7 +275,7 @@
     <link href="https://norvon.cn/blog/202103200600.html"/>
     <id>https://norvon.cn/blog/202103200600.html</id>
     <published>2021-03-20T06:00:13.000Z</published>
-    <updated>2025-04-07T05:12:08.389Z</updated>
+    <updated>2025-04-16T08:58:36.306Z</updated>
     
     
       
@@ -274,7 +305,7 @@
     <link href="https://norvon.cn/blog/202103200558.html"/>
     <id>https://norvon.cn/blog/202103200558.html</id>
     <published>2021-03-20T05:58:27.000Z</published>
-    <updated>2025-04-07T05:12:08.389Z</updated>
+    <updated>2025-04-16T08:58:36.307Z</updated>
     
     
       
@@ -303,7 +334,7 @@
     <link href="https://norvon.cn/blog/202103200553.html"/>
     <id>https://norvon.cn/blog/202103200553.html</id>
     <published>2021-03-20T05:53:03.000Z</published>
-    <updated>2025-04-07T05:12:08.389Z</updated>
+    <updated>2025-04-16T08:58:36.307Z</updated>
     
     
       
@@ -330,7 +361,7 @@
     <link href="https://norvon.cn/blog/202103200548.html"/>
     <id>https://norvon.cn/blog/202103200548.html</id>
     <published>2021-03-20T05:48:48.000Z</published>
-    <updated>2025-04-07T05:12:08.389Z</updated>
+    <updated>2025-04-16T08:58:36.306Z</updated>
     
     
       
@@ -358,7 +389,7 @@
     <link href="https://norvon.cn/blog/202103200546.html"/>
     <id>https://norvon.cn/blog/202103200546.html</id>
     <published>2021-03-20T05:46:34.000Z</published>
-    <updated>2025-04-07T05:12:08.388Z</updated>
+    <updated>2025-04-16T08:58:36.306Z</updated>
     
     
       
@@ -389,7 +420,7 @@
     <link href="https://norvon.cn/blog/202103200543.html"/>
     <id>https://norvon.cn/blog/202103200543.html</id>
     <published>2021-03-20T05:43:59.000Z</published>
-    <updated>2025-04-07T05:12:08.389Z</updated>
+    <updated>2025-04-16T08:58:36.306Z</updated>
     
     
       
@@ -417,7 +448,7 @@
     <link href="https://norvon.cn/blog/202103200330.html"/>
     <id>https://norvon.cn/blog/202103200330.html</id>
     <published>2021-03-20T03:30:02.000Z</published>
-    <updated>2025-04-07T05:12:08.389Z</updated>
+    <updated>2025-04-16T08:58:36.306Z</updated>
     
     
       
@@ -444,7 +475,7 @@
     <link href="https://norvon.cn/blog/201903051407.html"/>
     <id>https://norvon.cn/blog/201903051407.html</id>
     <published>2019-03-05T14:07:59.000Z</published>
-    <updated>2025-04-07T05:12:08.388Z</updated>
+    <updated>2025-04-16T08:58:36.306Z</updated>
     
     
     <summary type="html">&lt;p&gt;这里记录CocoaPods出现的一些问题和解决方法。&lt;/p&gt;
